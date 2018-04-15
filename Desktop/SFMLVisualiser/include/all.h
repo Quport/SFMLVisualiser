@@ -1,0 +1,12 @@
+#pragma once
+#include "view_moving.h"
+#include "useful.h"
+#include "hud_render_window.h"
+#include "device_handler.h"
+#include "better_text.h"
+#include "legend.h"
+#include "descriptive_shape.h"
+#include "descriptive_circle.h"
+#include "descriptive_rectangle.h"
+#include "texture_handler.h"
+#include "line_shape.h"

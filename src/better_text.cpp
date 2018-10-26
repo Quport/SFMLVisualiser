@@ -3,6 +3,12 @@
 using namespace std;
 using namespace sf;
 
+static constexpr double EPS = 1e-5;
+
+static bool doubleEqual(double a, double b) {
+	return abs(a - b) < EPS;
+}
+
 BetterText::BetterText() {
 	setCharacterSize(default_character_size);
 	setup();
@@ -46,8 +52,8 @@ float BetterText::getWidth() const {
 	return getSize().x;
 }
 
-const Color& BetterText::getColor() const {
-	return text.getColor();
+const Color& BetterText::getFillColor() const {
+	return text.getFillColor();
 }
 
 const String& BetterText::getString() const {
@@ -155,8 +161,8 @@ void BetterText::setWidth(float width) {
 	setSize(width, 0);
 }
 
-void BetterText::setColor(const Color& color) {
-	text.setColor(color);
+void BetterText::setFillColor(const Color& color) {
+	text.setFillColor(color);
 }
 
 void BetterText::setString(const String& string) {
@@ -224,11 +230,11 @@ void BetterText::updateSize() {
 	if (size_by_line)
 		siz_real = Vector2f(siz_real.x, siz_real.y * nlines);
 	
-	if(siz_real.x == 0.0 && siz_real.y != 0.0)
+	if (doubleEqual(siz_real.x, 0) && !doubleEqual(siz_real.y, 0))
 		siz_real.x = getGlobalBounds().width * siz_real.y / getGlobalBounds().height;
-	else if(siz_real.y == 0.0 && siz_real.x != 0.0)
+	else if (doubleEqual(siz_real.y, 0) && !doubleEqual(siz_real.x, 0))
 		siz_real.y = getGlobalBounds().height * siz_real.x / getGlobalBounds().width;
-	if(siz_real.y != 0.0 && siz_real.x != 0.0)
+	if (!doubleEqual(siz_real.y, 0) && !doubleEqual(siz_real.x, 0))
 		text.setScale(siz_real.x / getGlobalBounds().width, siz_real.y / getGlobalBounds().height);
 	text.scale(scal.x, scal.y);
 	if (max_size_set) {
@@ -254,11 +260,10 @@ Vector2f BetterText::getRealPosition(const Vector2f& position) {
 	return position - (tm_bound - tm_pos);
 }
 
-static const double EPS = 1e-5;
 void BetterText::update() {
-	if (getFont() == NULL || getString().isEmpty() || (abs(siz_set.x) < EPS && abs(siz_set.y) < EPS) || (abs(scal.x) < EPS && 
-		 abs(scal.y) < EPS) || abs(getGlobalBounds().height) < EPS || abs(getGlobalBounds().width) < EPS || 
-		 abs(getLocalBounds().width) < EPS || abs(getLocalBounds().height) < EPS)
+	if (getFont() == NULL || getString().isEmpty() || (doubleEqual(siz_set.x, 0) && doubleEqual(siz_set.y, 0)) || (doubleEqual(scal.x, 0) && 
+		 doubleEqual(scal.y, 0)) || doubleEqual(getGlobalBounds().height, 0) || doubleEqual(getGlobalBounds().width, 0) || 
+		 doubleEqual(getLocalBounds().width, 0) || doubleEqual(getLocalBounds().height, 0))
 		return;
 	
 	// nie wiem po co to, ale naprawia

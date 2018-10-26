@@ -97,5 +97,5 @@ private:
 	const float default_back_out_thickness = 2;
 	const sf::Color default_back_out_color = sf::Color::Black;
 	const sf::Color default_text_color = sf::Color::Black;
-	const sf::Color default_back_color = sf::Color::Color(255, 255, 255, 200);
+	const sf::Color default_back_color = sf::Color(255, 255, 255, 200);
 };

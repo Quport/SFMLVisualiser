@@ -14,7 +14,7 @@ Legend::Legend(const Font& font, unsigned int characterSize)
 }
 
 void Legend::setup() {
-	setColor(default_text_color);
+	setFillColor(default_text_color);
 	setBackgroundColor(default_back_color);
 	setBackgroundColor(default_back_color);
 	visible = true;

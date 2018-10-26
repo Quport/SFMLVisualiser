@@ -15,7 +15,7 @@ public:
 	float getHeight() const;
 	float getWidth() const;
 	
-	const sf::Color& getColor() const;
+	const sf::Color& getFillColor() const;
 	const sf::String& getString() const;
 	const sf::Font* getFont() const;
 	unsigned int getCharacterSize() const;
@@ -47,7 +47,7 @@ public:
 	
 	void removeMaxSize(); // turn off bounding box restriction
 	
-	void setColor(const sf::Color& color);
+	void setFillColor(const sf::Color& color);
 	void setString(const sf::String& string);
 	void setFont(const sf::Font& font);
 	void setCharacterSize(unsigned int size);

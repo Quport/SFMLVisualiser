@@ -317,7 +317,7 @@ const sf::Color& DescShape<ShapeClass>::getTextBackgroundColor() const {
 
 template<class ShapeClass>
 const sf::Color& DescShape<ShapeClass>::getTextColor() const {
-	return text.getColor();
+	return text.getFillColor();
 }
 
 template<class ShapeClass>
@@ -391,7 +391,7 @@ void DescShape<ShapeClass>::setTextBackgroundColor(sf::Color color) {
 
 template<class ShapeClass>
 void DescShape<ShapeClass>::setTextColor(sf::Color color) {
-	text.setColor(color);
+	text.setFillColor(color);
 }
 
 template<class ShapeClass>

@@ -162,6 +162,5 @@ int main() {
 	return 0;
 }
 /*
-clang++ main.cpp -o main -std=c++11 -Wall -Wextra -Wshadow -Wfloat-equal -Wno-unused-result -Wno-macro-redefined -O3 -lsfml-graphics -lsfml-window -lsfml-system && ./main
 */
 
